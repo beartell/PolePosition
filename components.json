@@ -1,0 +1,189 @@
+{
+    "component_configurations" : 
+	[
+		{
+			"comp_name" : "alluxio",
+			"service_list" : 
+			[
+				{
+					"service" : "Alluxio Worker",
+					"port" : 30000,
+					"level" : 0,
+					"system_cmd" : "systemctl restart alluxio-worker.service"
+				},
+				{
+					"service" : "Alluxio Master",
+					"port" : 19999,
+					"level" : 1,
+					"system_cmd" : "systemctl restart alluxio-master.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "flink",
+			"service_list" : 
+			[
+				{
+					"service" : "Flink Job Manager",
+					"port" : 8081,
+					"level" : 1,
+					"system_cmd" : "systemctl restart flink-jobmanager.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "spark",
+			"service_list" : 
+			[
+				{
+					"service" : "",
+					"port" : 0,
+					"level" : 0,
+					"system_cmd" : ""
+				}
+			],
+			"click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "hbase",
+			"service_list" : 
+			[
+				{
+					"service": "HMaster",
+					"port" : 16010,
+					"level" : 1,
+					"system_cmd" : "systemctl restart hbase-master.service"
+				},
+				{
+					"service" : "Region Server",
+					"port" : 16030,
+					"level" : 0,
+					"system_cmd" : "systemctl restart hbase-regionserver.service"
+				}
+			],
+			"click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "hive",
+			"service_list" : 
+			[
+				{
+					"service" : "Hive Server",
+					"port" : 10002,
+					"level" : 1,
+					"system_cmd" : "systemctl restart hive-server2.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "httpfs",
+			"service_list" : 
+			[
+				{
+					"service" : "Httpfs Web Server",
+					"port" : 14000,
+					"level" : 1,
+					"system_cmd" : "systemctl restart hadoop-httpfs.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "livy",
+			"service_list" : 
+			[
+				{
+					"service" : "Livy Server",
+					"port" : 8998,
+					"level" : 1,
+					"system_cmd" : "systemctl restart livy-service.service" 
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "kafka",
+			"service_list" : 
+			[
+				{
+					"service" : "Kafka Server",
+					"port" : 9092,
+					"level" : 0,
+					"system_cmd" : "systemctl restart kafka-server.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "oozie",
+			"service_list" : 
+			[
+				{
+					"service" : "Oozie Server",
+					"port" : 11000,
+					"level" : 1,
+					"system_cmd" : ""
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "solrcloud",
+			"service_list" : 
+			[
+				{
+					"service" : "Solr Server",
+					"port" : 8983,
+					"level" : 0,
+					"system_cmd" : "systemctl restart solr-server.service"
+				}
+			],
+            "click_state" : false,
+			"display_state" : true
+		},
+		{
+			"comp_name" : "default_services",
+			"service_list" :
+			[
+				{
+					"service" : "Data Node Manager",
+					"port" : 9864,
+					"level" : 0,
+					"system_cmd" : "systemctl restart hadoop-hdfs-datanode.service"
+				},
+				{
+					"service" : "Name Node Manager",
+					"port" : 50070,
+					"level" : 1,
+					"system_cmd" : "systemctl restart hadoop-hdfs-namenode.service"
+				},
+				{
+					"service" : "Resource Manager",
+					"port" : 8088,
+					"level" : 1,
+					"system_cmd" : "systemctl restart hadoop-yarn-resourcemanager.service"
+				},
+				{
+					"service" : "Node Manager",
+					"port" : 8042,
+					"level" : 0,
+					"system_cmd" : "systemctl restart hadoop-yarn-nodemanager.service"
+				}
+			],
+			"click_state" : true,
+			"display_state" : false
+		}
+	]
+}

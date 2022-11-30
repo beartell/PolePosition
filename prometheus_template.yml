@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: 'prometheus_master'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['bd01.beartell.com:9090']
+  - job_name: 'node_exporter_rocky'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['bd01.beartell.com:9100','bd02.beartell.com:9100','bd03.beartell.com:9100']
+  - job_name: 'hbase'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['bd01.beartell.com:8090','bd02.beartell.com:8090','bd03.beartell.com:8090']
+  - job_name: 'namenode'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['bd01.beartell.com:27001']
+  - job_name: 'datanodes'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['bd01.beartell.com:27002','bd02.beartell.com:27002','bd03.beartell.com:27002']

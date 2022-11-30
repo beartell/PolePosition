@@ -1,0 +1,23 @@
+global:
+  scrape_interval: 10s
+scrape_configs:
+  - job_name: prometheus_master
+    scrape_interval: 5s
+    static_configs:
+      - targets: [r3:9090]
+  - job_name: node_exporter_rocky
+    scrape_interval: 5s
+    static_configs:
+      - targets: [r1:9100, r2:9100, r3:9100]
+  - job_name: hbase
+    scrape_interval: 5s
+    static_configs:
+      - targets: [r1:8090, r2:8090, r3:8090]
+  - job_name: namenode
+    scrape_interval: 5s
+    static_configs:
+      - targets: [r1:27001]
+  - job_name: datanodes
+    scrape_interval: 5s
+    static_configs:
+      - targets: [r1:27002, r2:27002, r3:27002]

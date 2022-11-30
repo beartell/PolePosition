@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link
+      rel="stylesheet"
+      href="./bower_components/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./pole_style.css" />
+    <script>
+      let $ = require("jquery");
+    </script>
+    <script>
+      require("popper.js");
+    </script>
+    <script>
+      require("bootstrap");
+    </script>
+    <script>
+      let abc = require("node-ssh");
+    </script>
+
+    <title>Poleposition Remote Installer</title>
+  </head>
+  <body style="display: flex">
+    <div class="row" id="contentContainer">
+      <div class="col-md-4 p-0" id="leftPart">
+        
+        <div class="container">
+          <div class="styledimg"><img src="PolePosition.png" /></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+        </div>
+      </div>
+      <div class="col-md-8" id="contentPart">
+        
+      </div>
+    </div>
+    <div class="d-flex flex-row-reverse" id="footerButtons">
+      <div class="py-1">
+        <button
+          type="button"
+          class="btn btn-dark btn-sm"
+          id="backButton"
+        >
+          Back
+        </button>
+        <button type="button" class="btn btn-dark btn-sm" id="nextButton">
+          Next
+        </button>
+      </div>
+    </div>
+  </body>
+  <script src="renderer.js"></script>
+</html>

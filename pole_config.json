@@ -1,0 +1,45 @@
+{	
+	"pagelist" : [ 
+		{	
+			"filter" : "",
+			"content" : "./resources/app/Pages/intro_page/hello_page.html"
+		},
+		{
+			"filter" : "./Pages/domain_select/domain_select_filter.js",
+			"content" : "./resources/app/Pages/domain_select/domain_select.html"
+		},
+		{
+			"filter" : "./Pages/name_select/namefilter.js",
+			"content" : "./resources/app/Pages/name_select/name_select.html"
+		},
+		{
+			"filter" : "./Pages/master_select/masterfilter.js",
+			"content" : "./resources/app/Pages/master_select/masterselect.html"
+		},
+		{
+			"filter" : "./Pages/component_select/compfilter.js",
+			"content" : "./resources/app/Pages/component_select/comp_select.html"
+		},
+		{
+			"filter" : "./Pages/url_select/urlfilter.js",
+			"content" : "./resources/app/Pages/url_select/url_pick.html"
+		},
+		{
+			"filter" : "./Pages/path_select/pathfilter.js",
+			"content" : "./resources/app/Pages/path_select/path_select.html"
+		},
+		{
+			"filter" : "./Pages/installation_part/installfilter.js",
+			"content" : "./resources/app/Pages/installation_part/install_part.html"
+		},
+		{
+			"filter" : "./Pages/life_check/lifecheck.js",
+			"content" : "./resources/app/Pages/life_check/life_check.html"
+		},
+		{
+			"filter" : "./Pages/end_page/end_page.js",
+			"content" : "./resources/app/Pages/end_page/end_page.html"
+		}
+	]
+
+}
