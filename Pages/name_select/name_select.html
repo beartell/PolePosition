@@ -1,0 +1,15 @@
+<h5>Configurations</h5>
+<br>
+<small class='text-danger' id='logMessage'></small>
+<p>Select Method <select name="sshMethod" id="sshMethod">
+  <option value="Credentials">Credentials</option>
+  <option value="Key File">Key File</option>
+</select></p>
+<div id='credentialsContainer'>
+  <input type='text' class='w-100 mb-1' id='sshUsername' placeholder="Username">
+  <input type='password' class='w-100 mb-1' id='sshPassword' placeholder="Password">
+</div>
+<div id="sshFileContainer">
+  <label for="keyFileInput">Select SSH Key File: </label>
+  <input type="file", id="keyFileInput">
+</div>  
