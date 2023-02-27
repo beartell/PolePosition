@@ -76,7 +76,7 @@ function ShellExecutor()
     for(var i = 0; i < connectionInfoObjects.length; i++)
     {
         const cnInfo = connectionInfoObjects[i];
-        connectionInfoObjects[i].selfSsh.execCommand(sshCommandList[cnInfo.cmdIndex]).then(function(cmdResult){
+        cnInfo.selfSsh.execCommand(sshCommandList[cnInfo.cmdIndex]).then(function(cmdResult){
             if(cmdResult.stdout != "")
             {
                 cnInfo.outputLog += 'STDOUT: ' + cmdResult.stdout + '\n';
@@ -132,15 +132,22 @@ function StartRemoteInstallation()
     {
         storageDirectories += "- " + totalPathInputs[i] + "\n";
     }
+    
+    var zookeeperEnsemble = "hadoop_zookeeper::server::ensemble:\n";
+    for(var i = 1; i <= totalDomainInputs.length; i++) {
+	zookeeperEnsemble += `  - ['${i}', '${totalDomainInputs[i-1]}:2888:3888']\n`;
+    }
 
     var variadicCommand = "sudo su root -c \"cat > /etc/puppet/hieradata/site.yaml << EOF\n"+
     "---\n"+
-    "bigtop::hadoop_head_node: \"" + givenMasterNode + "\"\n"+
+    "bigtop::hadoop_head_node: '" + givenMasterNode + "'\n"+
     "hadoop::hadoop_storage_dirs:\n"+
-    storageDirectories +
+    storageDirectories + zookeeperEnsemble +
     "hadoop_cluster_node::cluster_components:\n- hdfs-non-ha\n- zookeeper\n- yarn\n"+ componentsString +
     "bigtop::jdk_package_name: \"java-1.8.0-openjdk-devel.x86_64\"\n"+
     "bigtop::bigtop_repo_uri: \"" + givenRepoUrl + "\"\nEOF\n\"";
+
+    console.log(variadicCommand);
 
     var exporterService = "cat > /etc/systemd/system/node_exporter.service << EOF\n"+
     "[Unit]\n"+
@@ -170,7 +177,7 @@ function StartRemoteInstallation()
     sshCommandList.push("sudo yum -y install puppet");
     sshCommandList.push("/opt/puppetlabs/bin/puppet module install puppetlabs-stdlib --version 4.12.0");
     sshCommandList.push("sudo git clone https://github.com/beartell/bigtop.git /bigtop-home");
-    sshCommandList.push("sudo sh -c \"cd /bigtop-home; git checkout release-3.1.1\"");
+    sshCommandList.push("sudo sh -c \"cd /bigtop-home; git checkout release-3.2.0\"");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
@@ -181,6 +188,7 @@ function StartRemoteInstallation()
     sshCommandList.push("sudo cp -r /bigtop-home/bigtop-deploy/puppet/hieradata/ /etc/puppet/");
     sshCommandList.push("sudo cp /bigtop-home/bigtop-deploy/puppet/hiera.yaml /etc/puppet/");
     sshCommandList.push("sudo find /etc/puppet");
+    sshCommandList.push("sudo mkdir -p /var/lib/zookeeper/ && hostname | tr -dc '1-9' | sudo tee -a /var/lib/zookeeper/myid");
     sshCommandList.push(variadicCommand);
     sshCommandList.push("/opt/puppetlabs/bin/puppet apply --hiera_config=/etc/puppet/hiera.yaml --modulepath=/bigtop-home/bigtop-deploy/puppet/modules:/etc/puppet/modules:/usr/share/puppet/modules:/etc/puppetlabs/code/environments/production/modules /bigtop-home/bigtop-deploy/puppet/manifests");
     sshCommandList.push("sleep 5");

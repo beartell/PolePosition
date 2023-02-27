@@ -30,6 +30,7 @@ const createWindow = () => {
     win.setResizable(false);
     win.loadFile('index.html');
     win.setMenu(null);
+    win.openDevTools();
 }
 
 app.whenReady().then(() => {

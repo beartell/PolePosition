@@ -2,26 +2,6 @@
     "component_configurations" : 
 	[
 		{
-			"comp_name" : "alluxio",
-			"service_list" : 
-			[
-				{
-					"service" : "Alluxio Worker",
-					"port" : 30000,
-					"level" : 0,
-					"system_cmd" : "systemctl restart alluxio-worker.service"
-				},
-				{
-					"service" : "Alluxio Master",
-					"port" : 19999,
-					"level" : 1,
-					"system_cmd" : "systemctl restart alluxio-master.service"
-				}
-			],
-            "click_state" : false,
-			"display_state" : true
-		},
-		{
 			"comp_name" : "flink",
 			"service_list" : 
 			[
