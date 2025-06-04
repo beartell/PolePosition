@@ -29,6 +29,22 @@ analytics and Industrial IoT workloads.
 - `components.json` – definition of optional Hadoop services and their ports.
 - `prometheus_template.yml` – template used to generate monitoring configuration.
 
+## PyQt Version
+
+In addition to the Electron application, a minimal reimplementation using
+Python and PyQt is available under `pyqt_version/`.  It loads the same
+`pole_config.json` wizard pages and provides next/previous navigation using Qt
+widgets.
+
+To try the PyQt prototype:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r pyqt_version/requirements.txt
+python pyqt_version/main.py
+```
+
 ## Usage
 
 1. Install dependencies:
