@@ -49,5 +49,5 @@ runs the installer remotely and reports progress in the interface.
 
 ## License
 
-This project is licensed under the ISC License. See the [LICENSE](LICENSE) file
+This project is licensed under the Apache License. See the [LICENSE](LICENSE) file
 for details.
