@@ -30,9 +30,8 @@ var OnLoad = function(contentState)
     })
 
     if(contentState.pageContentState["DomainInputs"] == undefined)
-    {   
+    {
         var domainInputArray = new Array();
-        contentState.pageContentState.push("DomainInputs");
         contentState.pageContentState["DomainInputs"] = domainInputArray;
     }
 
