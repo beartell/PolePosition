@@ -6,7 +6,7 @@ class PolePageViewer{
     #pageIndex = 0;
     #pageList = new Array();
 
-    pageContentState = new Array();
+    pageContentState = {};
     services = new Array();
 
     constructor(page_config, fieldId, nextId, prevId)
