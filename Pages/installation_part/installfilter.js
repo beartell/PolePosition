@@ -105,6 +105,13 @@ function StartRemoteInstallation()
     const givenRepoUrl = myContentState.pageContentState["SelectedUrl"]; // STRING
     const givenMasterNode = myContentState.pageContentState["MasterNode"]; // STRING
 
+    let bigtopVersion = "3.2.0";
+    const versionMatch = givenRepoUrl.match(/releases\/(\d+\.\d+\.\d+)\//);
+    if(versionMatch && versionMatch[1])
+    {
+        bigtopVersion = versionMatch[1];
+    }
+
     sshCommandList = new Array();
     globalCommandCounter = 0;
     connectionInfoObjects = new Array();
@@ -177,7 +184,7 @@ function StartRemoteInstallation()
     sshCommandList.push("sudo yum -y install puppet");
     sshCommandList.push("/opt/puppetlabs/bin/puppet module install puppetlabs-stdlib --version 4.12.0");
     sshCommandList.push("sudo git clone https://github.com/beartell/bigtop.git /bigtop-home");
-    sshCommandList.push("sudo sh -c \"cd /bigtop-home; git checkout release-3.2.0\"");
+    sshCommandList.push("sudo sh -c \"cd /bigtop-home; git checkout release-" + bigtopVersion + "\"");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
     sshCommandList.push("sudo cp -r /bigtop-home/jmx_exporter/ /usr/lib/");
