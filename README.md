@@ -1,5 +1,6 @@
 # PolePosition
 
+
 PolePosition is an Electron-based installer that orchestrates the deployment of Hadoop and
 related services across remote servers. The project combines a graphical wizard with
 SSH automation to simplify provisioning a data platform capable of running
@@ -42,6 +43,15 @@ analytics and Industrial IoT workloads.
    ```bash
    npm run make
    ```
+
+## Running Tests
+
+Install dependencies and run the Jest suite:
+
+```bash
+npm install
+npm test
+```
 
 During installation the wizard will request server addresses, authentication
 methods and the list of components to deploy. After collecting the information it
