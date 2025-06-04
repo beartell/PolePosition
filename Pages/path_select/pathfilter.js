@@ -1,27 +1,30 @@
 var PreLoad = function(contentState)
 {
-    // If it returns 0
-    // We can proceed
-    var urlField;
-    var chBox = document.getElementById("advanceCheck");
-    if(chBox.checked == true)
+    // Validate every input field in #textContainer and collect values
+    var container = document.getElementById("textContainer");
+    var inputs = container.getElementsByTagName("input");
+    var collectedPaths = [];
+    var allFilled = true;
+
+    for (var i = 0; i < inputs.length; i++)
     {
-        urlField = document.getElementById("repoUrlText");
+        var val = inputs[i].value.trim();
+        if(val === "")
+        {
+            allFilled = false;
+            break;
+        }
+        collectedPaths.push(val);
     }
-    else
-    {
-        urlField = document.getElementById("repoUrl");
-    }
-    
-    if(urlField.value == "")
+
+    if(!allFilled)
     {
         var lgMsg = document.getElementById("logMessage");
         lgMsg.style.display = "block";
         return 1;
     }
 
-    contentState.pageContentState["AdvanceChecked"] = chBox.checked;
-    contentState.pageContentState["SelectedUrl"] = urlField.value;
+    contentState.pageContentState["PathInput"] = collectedPaths;
     return 0;
 }
 
