@@ -39,7 +39,14 @@ analytics and Industrial IoT workloads.
    ```bash
    npm start
    ```
-3. To build distributable packages:
+3. On Linux, install the RPM toolchain required by the `maker-rpm` target:
+   ```bash
+   sudo apt-get install rpm
+   # or for Red Hat-based systems
+   sudo yum install rpm-build
+   ```
+
+4. To build distributable packages:
    ```bash
    npm run make
    ```
