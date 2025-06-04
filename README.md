@@ -88,3 +88,12 @@ Proje, Hadoop tabanlı “PolePosition” veri platformunun uzaktan kurulumu iç
 
 Bu bilgilerle projede ilk bakışta dikkat edilmesi gereken kısımları ve gelecek adımlarda öğrenilebilecek konuları özetlemiş olduk.
 
+
+## Running Tests
+
+Install dependencies and run the Jest suite:
+
+```bash
+npm install
+npm test
+```
